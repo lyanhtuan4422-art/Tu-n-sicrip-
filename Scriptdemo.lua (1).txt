@@ -1,5 +1,39 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+-- KEY SYSTEM
+local Window = Rayfield:CreateWindow({
+   Name = "Tuấn Sicrip",
+   LoadingTitle = "Tuấn Sicrip",
+   LoadingSubtitle = "Premium Hub",
+
+   ConfigurationSaving = {
+      Enabled = false,
+   },
+
+   Discord = {
+      Enabled = false,
+   },
+
+   KeySystem = true,
+
+   KeySettings = {
+      Title = "🔥 Tuấn Sicrip Key",
+      Subtitle = "Nhập Key Để Tiếp Tục",
+      Note = "Liên hệ admin để mua key",
+      FileName = "TuansicripKey",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+
+      Key = {
+         "bo223",
+         "TUAN15K",
+         "VIP2025",
+         "SICRIPVIP",
+         "BANANA75K"
+      }
+   }
+})
+
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
@@ -136,20 +170,6 @@ task.delay(60, function()
         CloseGui()
     end
 end)
-
--- MENU
-local Window = Rayfield:CreateWindow({
-   Name = "Tuấn Sicrip",
-   LoadingTitle = "Tuấn Sicrip",
-   LoadingSubtitle = "Premium Hub",
-   ConfigurationSaving = {
-      Enabled = false,
-   },
-   Discord = {
-      Enabled = false,
-   },
-   KeySystem = false,
-})
 
 -- TAB 15K
 local Tab15k = Window:CreateTab("🔥 Sicrip 15K", 4483362458)
