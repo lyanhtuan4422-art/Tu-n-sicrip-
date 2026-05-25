@@ -1,41 +1,193 @@
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-       local Window = MakeWindow({
-         Hub = {
-         Title = "Tuấn PRO",
-         Animation = "Tick tock: tuan4422🌚"
-         },
-        Key = {
-        KeySystem = false,
-        Title = "Key System",
-        Description = "",
-        KeyLink = "",
-        Keys = {"1234"},
-        Notifi = {
-        Notifications = true,
-        CorrectKey = "Running the Script...",
-       Incorrectkey = "The key is incorrect",
-       CopyKeyLink = "Copied to Clipboard"
-      }
-    }
-  })
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
 
-       MinimizeButton({
-       Image = "http://www.roblox.com/asset/?id=2058867242687987",
-       Size = {60, 60},
-       Color = Color3.fromRGB(10, 10, 10),
-       Corner = true,
-       Stroke = false,
-       StrokeColor = Color3.fromRGB(255, 0, 0)
-      })
-      
------- Tab
-     local Tab1o = MakeTab({Name = "Script farm 15k"})
-     
-------- BUTTON
-    
-    AddButton(Tab1o, {
-     Name = "farm 15k",
-    Callback = function()
-	  loadstring(game:HttpGet("https://github.com/LuaCrack/DatThg/raw/refs/heads/main/DatThgV5English"))()
-  })
+-- GUI
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = PlayerGui
+
+-- LOGO
+local Logo = Instance.new("TextLabel")
+Logo.Parent = ScreenGui
+Logo.Size = UDim2.new(0,0,0,60)
+Logo.Position = UDim2.new(0.5,-200,0.32,0)
+Logo.BackgroundTransparency = 1
+Logo.Text = "Tuấn Sicrip"
+Logo.TextColor3 = Color3.fromRGB(0,255,100)
+Logo.TextStrokeTransparency = 0
+Logo.Font = Enum.Font.GothamBlack
+Logo.TextScaled = true
+
+TweenService:Create(
+    Logo,
+    TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+    {Size = UDim2.new(0,400,0,60)}
+):Play()
+
+-- KHUNG THÔNG BÁO
+local WarningFrame = Instance.new("Frame")
+WarningFrame.Parent = ScreenGui
+WarningFrame.Size = UDim2.new(0,550,0,180)
+WarningFrame.Position = UDim2.new(0.5,-275,0.5,-90)
+WarningFrame.BackgroundColor3 = Color3.fromRGB(10,10,10)
+WarningFrame.BorderSizePixel = 0
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0,14)
+UICorner.Parent = WarningFrame
+
+-- NÚT X
+local CloseButton = Instance.new("TextButton")
+CloseButton.Parent = WarningFrame
+CloseButton.Size = UDim2.new(0,35,0,35)
+CloseButton.Position = UDim2.new(1,-40,0,5)
+CloseButton.BackgroundColor3 = Color3.fromRGB(25,25,25)
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255,0,0)
+CloseButton.Font = Enum.Font.GothamBold
+CloseButton.TextScaled = true
+
+local CloseCorner = Instance.new("UICorner")
+CloseCorner.CornerRadius = UDim.new(0,8)
+CloseCorner.Parent = CloseButton
+
+-- KHUNG TK SICRIP
+local AccountFrame = Instance.new("Frame")
+AccountFrame.Parent = WarningFrame
+AccountFrame.Size = UDim2.new(0.75,0,0,38)
+AccountFrame.Position = UDim2.new(0.125,0,0,8)
+AccountFrame.BackgroundColor3 = Color3.fromRGB(15,15,15)
+AccountFrame.BorderSizePixel = 2
+AccountFrame.BorderColor3 = Color3.fromRGB(255,255,255)
+
+local AccountCorner = Instance.new("UICorner")
+AccountCorner.CornerRadius = UDim.new(0,8)
+AccountCorner.Parent = AccountFrame
+
+-- CHỮ TK SICRIP
+local AccountText = Instance.new("TextLabel")
+AccountText.Parent = AccountFrame
+AccountText.Size = UDim2.new(1,0,1,0)
+AccountText.BackgroundTransparency = 1
+AccountText.TextColor3 = Color3.fromRGB(0,255,100)
+AccountText.Font = Enum.Font.GothamBlack
+AccountText.TextScaled = true
+AccountText.Text = "TK Sicrip: bo Quảng la"
+
+-- TEXT THÔNG BÁO
+local WarningText = Instance.new("TextLabel")
+WarningText.Parent = WarningFrame
+WarningText.Size = UDim2.new(1,-20,1,-80)
+WarningText.Position = UDim2.new(0,10,0,65)
+WarningText.BackgroundTransparency = 1
+WarningText.TextColor3 = Color3.fromRGB(0,255,100)
+WarningText.Font = Enum.Font.GothamBold
+WarningText.TextScaled = true
+WarningText.TextWrapped = true
+WarningText.Text = "Sicrip chỉ dùng cho 1 máy\nNếu dùng quá nhiều máy sẽ bị khóa acc và script"
+
+-- HÀM ĐÓNG
+local function CloseGui()
+    TweenService:Create(
+        WarningFrame,
+        TweenInfo.new(1),
+        {BackgroundTransparency = 1}
+    ):Play()
+
+    TweenService:Create(
+        WarningText,
+        TweenInfo.new(1),
+        {TextTransparency = 1}
+    ):Play()
+
+    TweenService:Create(
+        AccountText,
+        TweenInfo.new(1),
+        {TextTransparency = 1}
+    ):Play()
+
+    TweenService:Create(
+        Logo,
+        TweenInfo.new(1),
+        {TextTransparency = 1}
+    ):Play()
+
+    TweenService:Create(
+        CloseButton,
+        TweenInfo.new(1),
+        {TextTransparency = 1, BackgroundTransparency = 1}
+    ):Play()
+
+    wait(1)
+    ScreenGui:Destroy()
+end
+
+-- CLICK X
+CloseButton.MouseButton1Click:Connect(function()
+    CloseGui()
+end)
+
+-- TỰ ĐỘNG ĐÓNG SAU 1 PHÚT
+task.delay(60, function()
+    if ScreenGui then
+        CloseGui()
+    end
+end)
+
+-- MENU
+local Window = Rayfield:CreateWindow({
+   Name = "Tuấn Sicrip",
+   LoadingTitle = "Tuấn Sicrip",
+   LoadingSubtitle = "Premium Hub",
+   ConfigurationSaving = {
+      Enabled = false,
+   },
+   Discord = {
+      Enabled = false,
+   },
+   KeySystem = false,
+})
+
+-- TAB 15K
+local Tab15k = Window:CreateTab("🔥 Sicrip 15K", 4483362458)
+
+Tab15k:CreateButton({
+   Name = "💚 Load Script 15K",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/DatThg/main/DatThgV5English"))()
+   end,
+})
+
+-- TAB 20K
+local Tab20k = Window:CreateTab("💎 Sicrip 20K", 4483362458)
+
+Tab20k:CreateParagraph({
+   Title = "🟢 Premium",
+   Content = "Cần phải mua mới dùng được"
+})
+
+-- TAB 25K
+local Tab25k = Window:CreateTab("⚔️ Sicrip 25K", 4483362458)
+
+Tab25k:CreateParagraph({
+   Title = "🟢 Premium",
+   Content = "Cần phải mua mới dùng được"
+})
+
+-- TAB BANANA
+local BananaTab = Window:CreateTab("🍌 Banana 75K", 4483362458)
+
+BananaTab:CreateParagraph({
+   Title = "🟢 Premium",
+   Content = "Cần phải mua mới dùng được"
+})
+
+Rayfield:Notify({
+   Title = "Tuấn Sicrip",
+   Content = "Menu Loaded!",
+   Duration = 5,
+   Image = 4483362458,
+})
